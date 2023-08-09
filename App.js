@@ -7,11 +7,11 @@ import {Burgerking }from './Body'
 
 
 
-  const SearchBox = (restt , setRestt) =>{
+  const SearchBox = ({restt , setRestt}) =>{
 
 
-    function filterData(searchText, rest) {
-      console.log("inside", rest)
+    function filterData(searchText) {
+      console.log("inside", restt)
       const filterData = restt.filter((resto)=>
       resto.data.data.name.includes(searchText)
       )
@@ -33,7 +33,7 @@ import {Burgerking }from './Body'
         }
       /> 
       <button className='button' onClick={()=>{
-         const data= filterData (searchText,restt)
+         const data= filterData (searchText)
          setRestt(data)}}> 
          search  </button></>
     )
@@ -67,7 +67,7 @@ function App() {
         <li>contact</li>
         <li>cart</li>
       </ul>
-      <SearchBox className='search_box'></SearchBox>
+      <SearchBox className='search_box' restt={restt}  setRestt={setRestt}></SearchBox>
       <div className='res'>
       {
         restt.map((resto)=>{
